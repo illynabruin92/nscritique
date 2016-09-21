@@ -1,33 +1,24 @@
 var http = require('http');
 
 var PORT=8081;
+var PORT2=8090;
 
-function handleRequest(request, response){
-  if(request.url == "/cookies") {
-    response.end("ME WANT COOKIE.... OM NOM NOM NOM");
-  } else {
-      response.end('Eureka! Path Hit: ' + request.url);
-  }
+function handleRequestNicely(request, response){
+    response.end("Baby, you're a firework!");
 }
 
-var server = http.createServer(handleRequest);
+function handleRequestMean(request, response){
+  response.end("Go dig your grave, you sack.");
+}
 
-server.listen(PORT, function(){
+var serverone = http.createServer(handleRequestNicely);
+
+var server2 = http.createServer(handleRequestMean);
+
+serverone.listen(PORT, function(){
   console.log("Server listening on: http://localhost:%s", PORT);
 });
 
-var PORT=8082;
-
-function handleRequest(request, response){
-  if(request.url == "/poodles") {
-    response.end("Oodles of Poodles... Run!");
-  } else {
-      response.end('Get schwifty! Path Hit: ' + request.url);
-  }
-}
-
-var server2 = http.createServer(handleRequest);
-
-server.listen(PORT, function(){
-  console.log("Server listening on: http://localhost:%s", PORT);
+server2.listen(PORT2, function(){
+  console.log("Server listening on: http://localhost:%s", PORT2);
 });
